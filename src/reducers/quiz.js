@@ -79,9 +79,10 @@ const questions = [
 const initialState = {
   questions,
   answers: [],
+  incorrectAnswers: [],
   currentQuestionIndex: 0,
   quizOver: false,
-  totalElapsedTime: 0, // Track overall time spent for the quiz, property
+  globalElapsedTime: 0, // Track overall time spent for the quiz, property
   unansweredCount: 0, // Track the number of unanswered questions
 };
 
@@ -105,16 +106,28 @@ export const quiz = createSlice({
      * and `answerIndex` keys. See the readme for more details.
      */
     submitAnswer: (state, action) => {
-      const { questionId, answerIndex } = action.payload;
+      const { questionId, answerIndex, isCorrect } = action.payload;
       const question = state.questions.find((q) => q.id === questionId);
-    
+
       // Check if the question with the given ID exists
       if (!question) {
         throw new Error(
           `Could not find question with ID ${questionId}. Make sure you are passing the correct ID.`
         );
       }
-    
+
+      if (!isCorrect) {
+        // Assuming there's a field in the state to track incorrect answers
+        const incorrectQuestion = state.questions.find(
+          (q) => q.id === questionId
+        );
+        state.incorrectAnswers.push({
+          questionText: incorrectQuestion.questionText,
+          correctAnswer:
+            incorrectQuestion.options[incorrectQuestion.correctAnswerIndex],
+        });
+      }
+
       // Check if the answerIndex is within the valid range or if it's -1 (no reply)
       if (
         (answerIndex !== -1 && answerIndex < 0) ||
@@ -124,7 +137,7 @@ export const quiz = createSlice({
           `Invalid answerIndex ${answerIndex}. It should be within the range of possible answers or -1 for no reply.`
         );
       }
-    
+
       // Handle the case where no answer was given (answerIndex === -1)
       let answer;
       if (answerIndex === -1) {
@@ -133,7 +146,7 @@ export const quiz = createSlice({
       } else {
         answer = question.options[answerIndex];
       }
-    
+
       // Push the answer object to the answers array
       state.answers.push({
         questionId,
@@ -143,7 +156,6 @@ export const quiz = createSlice({
         isCorrect: question.correctAnswerIndex === answerIndex,
       });
     },
-    
 
     /**
      * Use this action to progress the quiz to the next question. If there's
@@ -160,8 +172,8 @@ export const quiz = createSlice({
       }
     },
 
-    updateTotalElapsedTime: (state, action) => {
-      state.totalElapsedTime += action.payload;
+    updateElapsedTime: (state, action) => {
+      state.globalElapsedTime = action.payload;
     },
 
     /**

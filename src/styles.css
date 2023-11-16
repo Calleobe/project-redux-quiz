@@ -19,6 +19,8 @@ button {
   margin: 10px auto;
   transition-duration: 0.4s;
   cursor: pointer;
+  border: 3px solid #bbb;
+  border-radius: 10px;
 }
 
 button:hover:not(:disabled) {
@@ -57,7 +59,8 @@ button:disabled {
   padding: 20px;
   font-size: 1.5em;
   margin: auto;
-  width: 80%;
+  width: 70%;
+  padding-bottom: 100px;
 }
 
 .counter-time-wrapper {
@@ -80,10 +83,50 @@ button:disabled {
 .quiz-image {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.results {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.results h1,
+.results p,
+.results h2 {
+  margin-bottom: 20px;
+}
+
+.results ul {
+  list-style: none; /* Remove default list style */
+  padding: 0;
+}
+
+.results li {
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.feedback {
+  position: absolute;
+  top: 20%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust the exact center */
+  color: #fff; /* Set the text color */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  /* Add more styles as needed */
 }
 
 @media (max-width: 600px) {
@@ -96,16 +139,22 @@ button:disabled {
   .quiz-image {
     width: 80%;
   }
+  .results {
+    width: 90%;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
   .question-box,
   button {
-    width: 85%;
+    width: 75%;
     font-size: 16px;
   }
   .quiz-image {
     width: 70%;
+  }
+  .results {
+    width: 85%;
   }
 }
 
@@ -114,9 +163,12 @@ button:disabled {
     width: 60%;
   }
   button {
-    width: 70%;
+    width: 50%;
   }
   .quiz-image {
     width: 60%;
+  }
+  .results {
+    width: 70%;
   }
 }
