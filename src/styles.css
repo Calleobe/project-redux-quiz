@@ -21,16 +21,12 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background-color: #af4c91;
 }
 
 button:disabled {
   cursor: default;
-}
-
-button:disabled:hover {
-  background-color: #4caf50;
 }
 
 .button-correct {
@@ -62,6 +58,11 @@ button:disabled:hover {
   font-size: 1.5em;
   margin: auto;
   width: 80%;
+}
+
+.counter-time-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 .progress-bar {
