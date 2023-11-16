@@ -13,18 +13,21 @@ const questions = [
     questionText: "Which country is known as the 'Land of the Rising Sun'?",
     options: ["India", "Australia", "Japan", "China"],
     correctAnswerIndex: 2, // Japan
+    image: "/quiz2.png",
   },
   {
     id: 3,
     questionText: "What is the longest river in the world?",
     options: ["Nile", "Amazon", "Yangtze", "Mississippi"],
     correctAnswerIndex: 0, // Nile
+    image: "/nile.jpg",
   },
   {
     id: 4,
     questionText: "Which of these cities is the capital of France?",
     options: ["Paris", "London", "Rome", "Berlin"],
     correctAnswerIndex: 0, // Paris
+    image: "/eiffel-tower.jpg",
   },
   {
     id: 5,
@@ -42,6 +45,7 @@ const questions = [
       "Pacific Ocean",
     ],
     correctAnswerIndex: 3, // Pacific Ocean
+    image: "/ocean.jpg",
   },
   {
     id: 7,
@@ -55,12 +59,14 @@ const questions = [
       "The Great Barrier Reef is located off the coast of which country?",
     options: ["South Africa", "Australia", "Mexico", "India"],
     correctAnswerIndex: 1, // Australia
+    image: "/great-barrier-reef.jpg",
   },
   {
     id: 9,
     questionText: "Which continent is known as the 'Frozen Continent'?",
     options: ["Antarctica", "Europe", "North America", "Asia"],
     correctAnswerIndex: 0, // Antarctica
+    image: "/antarctica.jpg",
   },
   {
     id: 10,
