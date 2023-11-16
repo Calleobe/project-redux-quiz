@@ -11,20 +11,19 @@ export const CurrentQuestion = () => {
   const question = useSelector(
     (state) => state.quiz.questions[currentQuestionIndex]
   );
-  const totalQuestions = useSelector(
-    (state) => state.quiz.questions.length
-  );
+  const totalQuestions = useSelector((state) => state.quiz.questions.length);
 
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(10);
+  const timeoutRef = useRef(null);
+  const [globalElapsedTime, setGlobalElapsedTime] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [progressPercentage, setProgressPercentage] = useState(
     ((currentQuestionIndex + 1) / totalQuestions) * 100
   );
-  const [timeLeft, setTimeLeft] = useState(10);
-  const [globalElapsedTime, setGlobalElapsedTime] = useState(0);
-  const timeoutRef = useRef(null);
-  const [quizStarted, setQuizStarted] = useState(false); // New state variable
+  
 
   if (!question) {
     return <h1>Oh no! I could not find the current question!</h1>;
@@ -120,6 +119,13 @@ export const CurrentQuestion = () => {
         {quizStarted ? ( // Display the question details only if the quiz has started
           <>
             <h2>{question.questionText}</h2>
+            {question.image && (
+              <img
+                src={question.image}
+                alt="Question Image"
+                className="quiz-image"
+              />
+            )}
             <div className="counter-time-wrapper">
               <p>
                 Question {currentQuestionIndex + 1} / {totalQuestions}

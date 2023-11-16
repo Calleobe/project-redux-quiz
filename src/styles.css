@@ -74,7 +74,16 @@ button:disabled {
 
 .progress-bar-fill {
   height: 100%;
-  background-color: #4caf50; /* Green color */
+  background-color: #4caf50;
+}
+
+.quiz-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 600px) {
@@ -84,6 +93,10 @@ button:disabled {
     font-size: 14px;
     padding: 10px 20px;
   }
+  ,
+  .quiz-image {
+    width: 80%;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -91,6 +104,10 @@ button:disabled {
   button {
     width: 85%;
     font-size: 16px;
+  }
+  ,
+  .quiz-image {
+    width: 70%;
   }
 }
 
@@ -100,5 +117,9 @@ button:disabled {
   }
   button {
     width: 70%;
+  }
+  ,
+  .quiz-image {
+    width: 60%;
   }
 }
