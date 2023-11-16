@@ -64,6 +64,11 @@ button:disabled:hover {
   width: 80%;
 }
 
+.counter-time-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .progress-bar {
   width: 100%;
   height: 20px;
