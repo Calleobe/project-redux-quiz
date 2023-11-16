@@ -18,6 +18,11 @@ export const CurrentQuestion = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
+  //state for progress bar
+  const [progressPercentage, setProgressPercentage] = useState(
+    ((currentQuestionIndex + 1) / totalQuestions) * 100
+  );
+  
 
   if (!question) {
     return <h1>Oh no! I could not find the current question!</h1>;
@@ -42,7 +47,12 @@ export const CurrentQuestion = () => {
       setShowFeedback(false);
       setSelectedAnswer(null);
       setIsAnswerCorrect(null);
-    }, 3000); // 3 seconds delay
+
+      // Update progress percentage for the progressBar
+      setProgressPercentage(
+      ((currentQuestionIndex + 2) / totalQuestions) * 100
+      );
+    }, 2000); // 2 seconds delay
   };
 
   const getButtonStyle = (index) => {
@@ -62,6 +72,13 @@ export const CurrentQuestion = () => {
         <p>
           Question {currentQuestionIndex + 1} / {totalQuestions}
         </p>
+        {/* Progress Bar */}
+        <div className="progress-bar">
+          <div
+            className="progress-bar-fill"
+            style={{ width: `${progressPercentage}%` }}
+          ></div>
+        </div>
         {showFeedback && (
           <p>{isAnswerCorrect ? "Correct answer" : "Wrong answer"}</p>
         )}
