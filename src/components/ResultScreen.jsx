@@ -7,6 +7,7 @@ const ResultScreen = () => {
   const dispatch = useDispatch();
   const answers = useSelector((state) => state.quiz.answers);
   const correctAnswers = answers.filter((answer) => answer.isCorrect).length;
+  const unansweredCount = useSelector((state) => state.quiz.unansweredCount);
   const totalQuestions = useSelector((state) => state.quiz.questions.length);
 
   const [confetti, setConfetti] = useState(false);
@@ -30,6 +31,7 @@ const ResultScreen = () => {
       {confetti && <Confetti />}
       <h1>Quiz Completed!</h1>
       <p>{`You got ${correctAnswers} out of ${totalQuestions} questions right.`}</p>
+      <p>{`You did not reply to ${unansweredCount} questions.`}</p>
       <button onClick={restartQuiz}>Restart Quiz</button>
     </div>
   );

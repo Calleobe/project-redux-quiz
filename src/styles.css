@@ -21,16 +21,12 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background-color: #af4c91;
 }
 
 button:disabled {
   cursor: default;
-}
-
-button:disabled:hover {
-  background-color: #4caf50;
 }
 
 .button-correct {
