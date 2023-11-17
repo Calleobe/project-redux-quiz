@@ -22,6 +22,7 @@ export const CurrentQuestion = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [isAnswerSelected, setIsAnswerSelected] = useState(false);
   const [progressPercentage, setProgressPercentage] = useState(
     ((currentQuestionIndex + 1) / totalQuestions) * 100
   );
@@ -38,7 +39,7 @@ export const CurrentQuestion = () => {
       setSelectedAnswer(answeredIndex);
       setIsAnswerCorrect(correct);
       setShowFeedback(true);
-
+      setIsAnswerSelected(true);
       dispatch(
         quiz.actions.submitAnswer({
           questionId: question.id,
@@ -52,6 +53,7 @@ export const CurrentQuestion = () => {
         setShowFeedback(false);
         setSelectedAnswer(null);
         setIsAnswerCorrect(null);
+        setIsAnswerSelected(false);
 
         setProgressPercentage(
           ((currentQuestionIndex + 2) / totalQuestions) * 100
@@ -143,16 +145,31 @@ export const CurrentQuestion = () => {
                 style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>
-            <div className="countdown">
-              <h4>{timeLeft}</h4>
-              {showFeedback && (
-                <h1 className="feedback">
-                  {isAnswerCorrect
-                    ? "Correct answer"
-                    : timeUp
-                    ? "Time is up"
-                    : "Wrong answer"}
-                </h1>
+            <div>
+              {isAnswerSelected ? (
+                <div className="countdown-empty">
+                  {showFeedback && (
+                    <h1
+                      className={`feedback ${
+                        isAnswerCorrect
+                          ? "correct"
+                          : timeUp
+                          ? "time-up"
+                          : "wrong"
+                      }`}
+                    >
+                      {isAnswerCorrect
+                        ? "Correct answer"
+                        : timeUp
+                        ? "Time is up"
+                        : "Wrong answer"}
+                    </h1>
+                  )}
+                </div> // This is the empty div
+              ) : (
+                <div className="countdown">
+                  <h4>{timeLeft}</h4>
+                </div>
               )}
             </div>
             {question.options.map((option, index) => (

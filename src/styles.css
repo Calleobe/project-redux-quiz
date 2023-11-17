@@ -74,7 +74,7 @@ button:disabled {
   width: 100%;
   height: 20px;
   background-color: #eee;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .progress-bar-fill {
@@ -135,12 +135,31 @@ button:disabled {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: 3px solid #bbb;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.6);
-  padding: 5px;
-
+  padding: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  /* Animation properties */
+  animation-name: fadeIn;
+  animation-duration: 1s; /* Adjust the time as needed */
+  animation-fill-mode: forwards; /* Keeps the element visible after animation ends */
+}
+
+.feedback.correct {
+  background-color: green; /* Adjust the color as needed */
+}
+
+.feedback.time-up {
+  background-color: orange; /* Adjust the color as needed */
+}
+
+.feedback.wrong {
+  background-color: red; /* Adjust the color as needed */
 }
 
 .countdown {
@@ -158,6 +177,18 @@ button:disabled {
   margin: 20px auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 1s ease-out;
+}
+
+.countdown-empty {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  margin: 20px auto;
 }
 
 .countdown h4 {
@@ -230,5 +261,16 @@ button:disabled {
   .countdown {
     width: 70px;
     height: 70px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%); /* Slightly higher starting position */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
   }
 }

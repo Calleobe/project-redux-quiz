@@ -50,7 +50,11 @@ const ResultScreen = () => {
       <h1>Quiz Completed!</h1>
       {correctAnswers <= 5 ? (
         <div>
-          <img src="geography-wrong.png" alt="Motivational Image" />
+          <img
+            src="geography-wrong.png"
+            alt="Motivational Image"
+            className="quiz-image"
+          />
           <h1 style={{ color: "orange" }}>You Lose!</h1>
         </div>
       ) : (
