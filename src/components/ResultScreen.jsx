@@ -17,20 +17,22 @@ const ResultScreen = () => {
   const incorrectAnswers = useSelector((state) => state.quiz.incorrectAnswers);
 
   useEffect(() => {
-    // Adjust the confetti origin if needed
-    // For example, center of the screen
-    setConfettiOrigin({ x: 0.5, y: 0.5 });
+    if (correctAnswers > 5) {
+      // Adjust the confetti origin if needed
+      // For example, center of the screen
+      setConfettiOrigin({ x: 0.5, y: 0.5 });
 
-    // Confetti effect
-    setConfetti(true);
-    const timer = setTimeout(() => {
-      setConfetti(false);
-    }, 10000); // 10 seconds
+      // Confetti effect
+      setConfetti(true);
+      const timer = setTimeout(() => {
+        setConfetti(false);
+      }, 10000); // 10 seconds
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [correctAnswers]);
 
   const restartQuiz = () => {
     dispatch(quiz.actions.restart());
@@ -46,8 +48,17 @@ const ResultScreen = () => {
         />
       )}
       <h1>Quiz Completed!</h1>
+      {correctAnswers <= 5 ? (
+        <div>
+          <img src="geography-wrong.png" alt="Motivational Image" />
+          <h1 style={{ color: "orange" }}>You Lose!</h1>
+        </div>
+      ) : (
+        <h1 style={{ color: "green" }}>You Win!</h1>
+      )}
+
       <p>{`You got ${correctAnswers} out of ${totalQuestions} questions right.`}</p>
-      <p>{`You did not reply to ${unansweredCount} questions.`}</p>
+      <p>{`You did not reply in time to ${unansweredCount} questions.`}</p>
       <p>Total Time Elapsed: {globalElapsedTime.toFixed(2)} seconds</p>
       <h2>You need to study more about these topics:</h2>
       <ul>

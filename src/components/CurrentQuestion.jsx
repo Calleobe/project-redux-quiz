@@ -169,11 +169,19 @@ export const CurrentQuestion = () => {
         ) : (
           // Display the start message and button if the quiz hasn't started
           <>
-            <h2>Ready to take this quiz?</h2>
+            <h1>Geography quiz game</h1>
+
+            <p>Ready? Get over 5 points to win!</p>
             <button onClick={startQuiz}>Start</button>
           </>
         )}
       </div>
+      <footer className="copyright">
+        <p>
+          Quiz project, by <a href="https://github.com/Calleobe">Carl Öberg</a>{" "}
+          & <a href="https://github.com/fabio-cassisa">Fabio Cassisa</a>, 2023
+        </p>
+      </footer>
     </div>
   );
 };
