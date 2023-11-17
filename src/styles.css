@@ -21,6 +21,7 @@ button {
   cursor: pointer;
   border: 3px solid #bbb;
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 button:hover:not(:disabled) {
@@ -64,6 +65,7 @@ button:disabled {
 }
 
 .counter-time-wrapper {
+  font-family: Arial, Helvetica, sans-serif, cursive;
   display: flex;
   justify-content: space-between;
 }
@@ -118,15 +120,48 @@ button:disabled {
 
 .feedback {
   position: absolute;
-  top: 20%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust the exact center */
-  color: #fff; /* Set the text color */
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-  padding: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+
   border-radius: 5px;
   text-align: center;
-  /* Add more styles as needed */
+}
+
+.countdown {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #af4c91;
+  border: 3px solid #bbb;
+  color: white;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 1s ease-out;
+}
+
+.countdown h4 {
+  font-size: 1.2em;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.4);
+  }
 }
 
 @media (max-width: 600px) {
@@ -142,6 +177,10 @@ button:disabled {
   .results {
     width: 90%;
   }
+  .countdown {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -155,6 +194,10 @@ button:disabled {
   }
   .results {
     width: 85%;
+  }
+  .countdown {
+    width: 50px;
+    height: 50px;
   }
 }
 
@@ -170,5 +213,9 @@ button:disabled {
   }
   .results {
     width: 70%;
+  }
+  .countdown {
+    width: 70px;
+    height: 70px;
   }
 }

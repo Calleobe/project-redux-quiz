@@ -58,6 +58,7 @@ export const CurrentQuestion = () => {
         );
 
         setTimeLeft(10);
+        setTimeUp(false);
       }, 2000);
 
       timeoutRef.current = timeoutId;
@@ -135,13 +136,24 @@ export const CurrentQuestion = () => {
               <p>
                 Question {currentQuestionIndex + 1} / {totalQuestions}
               </p>
-              <p>{timeLeft}s</p>
             </div>
             <div className="progress-bar">
               <div
                 className="progress-bar-fill"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
+            </div>
+            <div className="countdown">
+              <h4>{timeLeft}</h4>
+              {showFeedback && (
+                <h1 className="feedback">
+                  {isAnswerCorrect
+                    ? "Correct answer"
+                    : timeUp
+                    ? "Time is up"
+                    : "Wrong answer"}
+                </h1>
+              )}
             </div>
             {question.options.map((option, index) => (
               <button
@@ -153,15 +165,6 @@ export const CurrentQuestion = () => {
                 {option}
               </button>
             ))}
-            {showFeedback && (
-              <h1 className="feedback">
-                {isAnswerCorrect
-                  ? "Correct answer"
-                  : timeUp
-                  ? "Time is up"
-                  : "Wrong answer"}
-              </h1>
-            )}
           </>
         ) : (
           // Display the start message and button if the quiz hasn't started
