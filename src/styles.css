@@ -218,7 +218,7 @@ button:disabled {
 @media (max-width: 600px) {
   .question-box,
   button {
-    width: 90%;
+    width: 80%;
     font-size: 14px;
     padding: 10px 20px;
   }
@@ -226,11 +226,16 @@ button:disabled {
     width: 80%;
   }
   .results {
-    width: 90%;
+    width: 80%;
   }
   .countdown {
     width: 40px;
     height: 40px;
+  }
+  .countdown-empty {
+    width: 40px;
+    height: 40px;
+    padding-top: 50px;
   }
 }
 
@@ -250,6 +255,11 @@ button:disabled {
     width: 50px;
     height: 50px;
   }
+  .countdown-empty {
+    width: 50px;
+    height: 50px;
+    padding-top: 30px;
+  }
 }
 
 @media (min-width: 1025px) {
@@ -268,6 +278,11 @@ button:disabled {
   .countdown {
     width: 70px;
     height: 70px;
+  }
+  .countdown-empty {
+    width: 70px;
+    height: 70px;
+    padding-top: 20px;
   }
 }
 
