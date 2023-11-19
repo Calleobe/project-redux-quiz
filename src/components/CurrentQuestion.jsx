@@ -186,9 +186,9 @@ export const CurrentQuestion = () => {
         ) : (
           // Display the start message and button if the quiz hasn't started
           <>
-            <h1 className="Startquiztext">Geography quiz game</h1>
+            <h1 className="start-quiz-text">Geography quiz game</h1>
 
-            <p className="Startquiztext">Ready? Get over 5 points to win!</p>
+            <p className="start-quiz-text">Ready? Get over 5 points to win!</p>
 
             <button onClick={startQuiz}>Start</button>
           </>

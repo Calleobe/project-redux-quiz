@@ -28,6 +28,13 @@ button:hover:not(:disabled) {
   background-color: #af4c91;
 }
 
+/* Remove hover effect on touch devices */
+@media (hover: none) {
+  button:hover:not(:disabled) {
+    background-color: #af4c91;
+  }
+}
+
 button:disabled {
   cursor: default;
 }
@@ -90,7 +97,7 @@ button:disabled {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.Startquiztext {
+.start-quiz-text {
   text-align: center;
 }
 
