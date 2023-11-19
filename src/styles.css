@@ -28,13 +28,11 @@ button:hover:not(:disabled) {
   background-color: #af4c91;
 }
 
-/* Remove hover effect on touch devices */
 @media (hover: none) {
-  button:active {
-    background-color: #af4c91;
+  button:hover {
+    background-color: inherit; 
   }
 }
-
 
 button:disabled {
   cursor: default;
