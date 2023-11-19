@@ -30,7 +30,7 @@ button:hover:not(:disabled) {
 
 @media (hover: none) {
   button:hover {
-    background-color: inherit; 
+    background-color: #4c5eaf; 
   }
 }
 
