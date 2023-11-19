@@ -29,11 +29,8 @@ button:hover:not(:disabled) {
 }
 
 @media (hover: none) {
-  button:hover {
+  button:hover:not(:disabled) {
     background-color: #4c5eaf;
-  }
-  button:disabled {
-    background-color: #4c5eaf; 
   }
 }
 
