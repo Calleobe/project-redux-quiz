@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { quiz } from "../reducers/quiz";
+import Copyright from "./Copyright";
 import "../styles.css";
+
 
 export const CurrentQuestion = () => {
   const dispatch = useDispatch();
@@ -194,12 +196,7 @@ export const CurrentQuestion = () => {
           </>
         )}
       </div>
-      <footer className="copyright">
-        <p>
-          Quiz project, by <a href="https://github.com/Calleobe">Carl Öberg</a>{" "}
-          & <a href="https://github.com/fabio-cassisa">Fabio Cassisa</a>, 2023
-        </p>
-      </footer>
+      <Copyright />     
     </div>
   );
 };

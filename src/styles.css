@@ -30,10 +30,11 @@ button:hover:not(:disabled) {
 
 /* Remove hover effect on touch devices */
 @media (hover: none) {
-  button:hover:not(:disabled) {
+  button:active {
     background-color: #af4c91;
   }
 }
+
 
 button:disabled {
   cursor: default;
@@ -66,7 +67,7 @@ button:disabled {
   border-radius: 10px;
   padding: 40px;
   font-size: 1.5em;
-  margin: auto;
+  margin: 30px auto;
   width: 70%;
   padding-bottom: 50px;
 }
@@ -104,7 +105,7 @@ button:disabled {
 .results {
   text-align: center;
   max-width: 800px;
-  margin: auto;
+  margin: 30px auto;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -123,6 +124,21 @@ button:disabled {
 .copyright p {
   font-family: Arial, Helvetica, sans-serif, cursive;
   text-align: center;
+}
+
+.copyright a {
+ text-decoration: none;
+ color: white;
+}
+
+.copyright a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.copyright a:visited {
+  text-decoration: none;
+  color: white;
 }
 
 .results ul {
@@ -216,6 +232,9 @@ button:disabled {
 }
 
 @media (max-width: 600px) {
+  .question-box {
+    margin-top: 20px;
+  }
   .question-box,
   button {
     width: 80%;
@@ -240,6 +259,9 @@ button:disabled {
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
+  .question-box {
+    margin-top: 25px;
+  }
   .question-box,
   button {
     width: 75%;

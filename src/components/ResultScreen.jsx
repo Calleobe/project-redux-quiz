@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { quiz } from "../reducers/quiz";
+import Copyright from "./Copyright";
 import Confetti from "react-confetti";
 
 const ResultScreen = () => {
@@ -39,6 +40,7 @@ const ResultScreen = () => {
   };
 
   return (
+    <>
     <div className="results">
       {confetti && (
         <Confetti
@@ -64,16 +66,30 @@ const ResultScreen = () => {
       <p>{`You got ${correctAnswers} out of ${totalQuestions} questions right.`}</p>
       <p>{`You did not reply in time to ${unansweredCount} questions.`}</p>
       <p>Total Time Elapsed: {globalElapsedTime.toFixed(2)} seconds</p>
-      <h2>You need to study more about these topics:</h2>
-      <ul>
-        {incorrectAnswers.map((item, index) => (
-          <li key={index}>
-            {item.correctAnswer} (from question: {item.questionText})
-          </li>
-        ))}
-      </ul>
+      {unansweredCount === totalQuestions ? (
+        <h2>Give it another shot, I know you can reply at least once!</h2>
+      ) : (
+        <>
+          {incorrectAnswers.length > 0 ? (
+          <>
+            <h2>You need to study more about these topics:</h2>
+            <ul>
+              {incorrectAnswers.map((item, index) => (
+                <li key={index}>
+                  {item.correctAnswer} (from question: {item.questionText})
+                </li>
+              ))}
+            </ul>
+          </>
+            ) : (
+              <h2>You're a master! Wow!</h2>
+            )}
+        </>
+      )}
       <button onClick={restartQuiz}>Restart Quiz</button>
     </div>
+    <Copyright />
+    </>
   );
 };
 
